@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{page_title}}</title>
+    <link rel="stylesheet" href="/css/foundation.css" />
+    <script src="/js/vendor/modernizr.js"></script>
+	<script src="/js/vendor/jquery.js"></script>
+</head>
+<body>
+	<h1>{{page_title}}</h1>
+	{{{content}}}
+    
+	<script src="/js/foundation.min.js"></script>
+	<script>
+	  $(document).foundation();
+
+      $(".show_item").on("click",function(){
+		var target = $(this).attr("target");
+		$("#"+target).toggle();
+		if ($("#"+target).is(":visible") )
+		{
+				$(this).hide();
+		}
+		else
+		{
+				$(this).show();
+		}
+	  }).trigger("click");
+
+	  
+      $(".hide_item").on("click",function(e){
+		e.preventDefault();
+		var target = $(this).attr("trigger");
+		$("#"+target).trigger("click");
+		return false;
+	  });
+	</script>
+</body>
+</html>

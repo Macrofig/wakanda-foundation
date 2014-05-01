@@ -1,6 +1,6 @@
 <form id="add_user">
   <div class="row">
-    <div class="columns small-4">
+    <div class="columns small-8">
       <label id="user_name">Name: 
         <input type="text" name="user_name" value="" />
       </label>
@@ -12,15 +12,19 @@
     </div>
   </div>
   <div class="row">
-    <div class="columns small-8">
+    <div class="columns small-12">
       <label id="user_type">Type: 
-        <select name="user_type">{{user_type_options}}</select>
+        <select name="user_type">
+		{{#user_types}}
+			<option value="{{ID}}">{{Name}}</option>
+		{{/user_types}}
+		</select>
       </label>
     </div>
   </div>
   <div class="row">
     <div class="columns small-4">
-      <input type="submit" value="Create User" />
+      <input type="submit" class="button" value="Create User" />
     </div>
   </div>
 </form

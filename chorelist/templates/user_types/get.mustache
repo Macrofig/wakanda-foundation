@@ -1,0 +1,61 @@
+<div class="rows">
+<ul class="columns small-12">
+{{#usertypes}}
+  <li id="usertype_{{ID}}" data_record="{{ID}}">{{ Name }} <a href="#" class="delete">Delete</a></li>
+{{/usertypes}}
+</ul>
+</div>
+<div class="rows">
+	<div class="columns small-4">
+		<span id="open_add_new" class="show_item button tiny" target="user_types">Add New</span>
+	</div>
+</div>
+<form id="user_types">
+	<div class="rows">
+		<div class="columns small-8">
+			<label> User Type Name:
+				<input type="text" name="user_type_name" value=""/>
+			</label>
+		</div>
+	</div>
+	<div class="rows">
+		<div class="columns small-8">
+			<a href="#" class="hide_item" trigger="open_add_new" >Cancel</a>
+			<input id="go_save" type="submit" class="button" value="Save" />
+		</div>
+	</div>
+</form>
+<script>
+	$("#go_save").on("click",go_save);
+	function go_save(e)
+	{
+		e.preventDefault();
+		var url = '/usertypes/add/'
+		$.ajax(
+		{
+			url:url
+			, data : $("form input").serialize()
+			, type: "POST"
+			, complete: function(resp){console.log(resp);}
+		});
+		return false;
+	}
+
+	$(".delete").on("click",go_delete);
+
+	function go_delete(e)
+	{
+		e.preventDefault();
+		var del_id = $(this).parent("li").attr("data_record");
+		var url = '/usertypes/delete/'
+		$.ajax(
+		{
+			url:url
+			, data : {"ID":del_id}
+			, type: "POST"
+			, complete: function(resp){console.log(resp);}
+		});
+		return false;
+
+	}
+</script>

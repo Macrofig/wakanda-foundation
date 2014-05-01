@@ -126,7 +126,7 @@
 				{
 					"name": "Name",
 					"scope": "public",
-					"type": "word",
+					"type": "string",
 					"kind": "storage"
 				},
 				{
