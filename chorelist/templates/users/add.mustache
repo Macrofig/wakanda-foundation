@@ -1,0 +1,26 @@
+<form id="add_user">
+  <div class="row">
+    <div class="columns small-4">
+      <label id="user_name">Name: 
+        <input type="text" name="user_name" value="" />
+      </label>
+    </div>
+    <div class="columns small-4">
+      <label id="user_nickname">Nickname: 
+        <input type="text" name="user_nickname" value="" />
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns small-8">
+      <label id="user_type">Type: 
+        <select name="user_type">{{user_type_options}}</select>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns small-4">
+      <input type="submit" value="Create User" />
+    </div>
+  </div>
+</form

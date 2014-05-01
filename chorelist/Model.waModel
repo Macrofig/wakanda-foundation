@@ -1,0 +1,272 @@
+﻿{
+	"toJSON": true,
+	"extraProperties": {
+		"version": "2",
+		"classes": {
+			"Users": {
+				"panelColor": "#B7DDE8",
+				"panel": {
+					"isOpen": "true",
+					"position": {
+						"X": 25,
+						"Y": 20
+					},
+					"pathVisible": true
+				}
+			},
+			"UserTypes": {
+				"panelColor": "#4FA997",
+				"panel": {
+					"isOpen": "true",
+					"position": {
+						"X": 41,
+						"Y": 340
+					},
+					"pathVisible": true
+				}
+			},
+			"Chores": {
+				"panelColor": "#B2A2C7",
+				"panel": {
+					"isOpen": "true",
+					"position": {
+						"X": 693,
+						"Y": 35
+					},
+					"pathVisible": true
+				}
+			},
+			"ScheduleTypes": {
+				"panel": {
+					"pathVisible": true,
+					"position": {
+						"X": 704,
+						"Y": 280
+					}
+				}
+			},
+			"Todos": {
+				"panel": {
+					"position": {
+						"X": 434,
+						"Y": 43
+					},
+					"pathVisible": true
+				}
+			}
+		},
+		"model": {
+			"scriptMode": "manual",
+			"workspaceLeft": 0,
+			"workspaceTop": 0
+		}
+	},
+	"dataClasses": [
+		{
+			"collectionName": "UsersCollection",
+			"className": "Users",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"type": "long",
+					"autosequence": "true",
+					"unique": "true",
+					"primKey": "true"
+				},
+				{
+					"name": "Name",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "Nickname",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "UserType",
+					"scope": "public",
+					"path": "UserTypes",
+					"type": "UserTypes",
+					"kind": "relatedEntity"
+				},
+				{
+					"name": "dataClass2Collection",
+					"scope": "public",
+					"reversePath": true,
+					"path": "Assignee",
+					"type": "TodosCollection",
+					"kind": "relatedEntities"
+				},
+				{
+					"name": "dataClass2Collection_1",
+					"scope": "public",
+					"reversePath": true,
+					"path": "Assigner",
+					"type": "TodosCollection",
+					"kind": "relatedEntities"
+				}
+			]
+		},
+		{
+			"collectionName": "UserTypesCollection",
+			"className": "UserTypes",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"type": "long",
+					"autosequence": "true",
+					"unique": "true",
+					"primKey": "true"
+				},
+				{
+					"name": "Name",
+					"scope": "public",
+					"type": "word",
+					"kind": "storage"
+				},
+				{
+					"name": "usersCollection",
+					"scope": "public",
+					"reversePath": true,
+					"path": "UserType",
+					"type": "UsersCollection",
+					"kind": "relatedEntities"
+				}
+			]
+		},
+		{
+			"collectionName": "ChoresCollection",
+			"className": "Chores",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"type": "long",
+					"autosequence": "true",
+					"unique": "true",
+					"primKey": "true"
+				},
+				{
+					"name": "Name",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				},
+				{
+					"name": "Active",
+					"scope": "public",
+					"type": "byte",
+					"kind": "storage"
+				},
+				{
+					"name": "dataClass2Collection",
+					"scope": "public",
+					"reversePath": true,
+					"path": "Chore",
+					"type": "TodosCollection",
+					"kind": "relatedEntities"
+				},
+				{
+					"name": "Schedule",
+					"scope": "public",
+					"type": "ScheduleTypes",
+					"kind": "relatedEntity",
+					"path": "ScheduleTypes"
+				}
+			]
+		},
+		{
+			"collectionName": "ScheduleTypesCollection",
+			"className": "ScheduleTypes",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"type": "long",
+					"autosequence": "true",
+					"unique": "true",
+					"primKey": "true"
+				},
+				{
+					"name": "Name",
+					"scope": "public",
+					"type": "word",
+					"kind": "storage"
+				},
+				{
+					"name": "Repeat",
+					"scope": "public",
+					"type": "byte",
+					"kind": "storage"
+				},
+				{
+					"name": "Schedule",
+					"scope": "public",
+					"type": "long",
+					"kind": "storage"
+				},
+				{
+					"name": "choresCollection",
+					"scope": "public",
+					"reversePath": true,
+					"path": "Schedule",
+					"type": "ChoresCollection",
+					"kind": "relatedEntities"
+				}
+			]
+		},
+		{
+			"collectionName": "TodosCollection",
+			"className": "Todos",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"type": "long",
+					"autosequence": "true",
+					"unique": "true",
+					"primKey": "true"
+				},
+				{
+					"name": "Done",
+					"scope": "public",
+					"type": "date",
+					"kind": "storage"
+				},
+				{
+					"name": "Created",
+					"scope": "public",
+					"type": "date",
+					"kind": "storage"
+				},
+				{
+					"name": "Assignee",
+					"scope": "public",
+					"path": "Users",
+					"type": "Users",
+					"kind": "relatedEntity"
+				},
+				{
+					"name": "Assigner",
+					"scope": "public",
+					"path": "Users",
+					"type": "Users",
+					"kind": "relatedEntity"
+				},
+				{
+					"name": "Chore",
+					"scope": "public",
+					"path": "Chores",
+					"type": "Chores",
+					"kind": "relatedEntity"
+				}
+			]
+		}
+	],
+	"type": []
+}
